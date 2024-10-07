@@ -3,7 +3,7 @@ from ball import Ball
 from paddle import Paddle
 from scoreboard import Scoreboard
 import time
-MAX_SCORE = 1
+MAX_SCORE = 3
 
 screen = Screen()
 screen.setup(height=600, width=800)
@@ -25,7 +25,7 @@ screen.onkey(r_paddle.down, "Down")
 
 game_on = True
 while game_on:
-  time.sleep(0.1)
+  time.sleep(ball.movespeed)
   screen.update()
   ball.move()
 
@@ -33,7 +33,7 @@ while game_on:
   if ball.ycor() > 280 or ball.ycor() < -280:
     ball.y_bounce()
 
-  #Detect collision with r_paddle
+  #Detect collision with a paddle
   if (ball.distance(r_paddle) < 50 and ball.xcor() > 325) or (ball.distance(l_paddle) < 50 and ball.xcor() < -325):
     ball.x_bounce()
 
